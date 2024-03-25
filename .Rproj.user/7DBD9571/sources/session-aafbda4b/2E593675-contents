@@ -1,0 +1,59 @@
+---
+title: "DATA550 Final Report"
+author: "Jiawen Shi"
+date: "`r Sys.Date()`"
+output: html_document
+runtime: shiny
+---
+
+# Introduction
+
+In this project we will use **HIV/AIDS Diagnoses by Neighborhood, Sex, and Race/Ethnicity** dataset, which is provided by New York City. This dataset includes data on new diagnoses of HIV and AIDS in NYC for the calendar years 2016 through 2020. Reported cases and case rates (per 100,000 population) are stratified by United Hospital Fund (UHF) neighborhood, sex, and race/ethnicity. [Website](https://catalog.data.gov/dataset/hiv-aids-diagnoses-by-neighborhood-sex-and-race-ethnicity).
+
+This data has been pre-processed, including processes like removing missing data, combining duplicate data, and more.
+
+```{r, load-data, echo=FALSE}
+library(ggplot2)
+library(knitr)
+
+# Load data into variable
+data <- read.csv('cleaned_data.csv')
+```
+
+# Data Analysis
+
+## Tables
+
+These tables give a comprehensive view of distributions of HIV/AIDS diagnoses. You can check the distribution of each variable by selecting in the menu below.
+
+The data shows changes over years with a great rise in 2020. It covers many neighborhoods, more men than women, different race groups, and many records with no HIV diagnoses, showing a pattern where few cases have high numbers.
+
+```{r, tables, echo=FALSE}
+sex_distribution <- table(data$SEX)
+sex_distribution_df <- as.data.frame(sex_distribution)
+colnames(sex_distribution_df) <- c("Sex", "Count")
+kable(sex_distribution_df, caption = "HIV/AIDS Diagnoses Distribution by Sex")
+
+year_distribution <- table(data$YEAR)
+year_distribution_df <- as.data.frame(year_distribution)
+colnames(year_distribution_df) <- c("Year", "Count")
+kable(year_distribution_df, caption = "HIV/AIDS Diagnoses Distribution by Year")
+```
+
+## Figures
+
+These figures visualize the distribution of variables. You can also choose the specific category to view.
+
+From these figures we can learn that there are more male HIV/AIDS diagnoses than female in NYC from 2010 - 2021. Also more diagnoses are counted during 2010 - 2013 than rest of the time.
+
+```{r, figures, echo=FALSE}
+ggplot(data, aes(x = SEX)) + 
+  geom_bar() + 
+  xlab("Sex") + 
+  ggtitle("Distribution of HIV/AIDS Diagnoses by Sex")
+
+ggplot(data, aes(x = YEAR)) + 
+  geom_bar() + 
+  xlab("Year") + 
+  ggtitle("Distribution of HIV/AIDS Diagnoses by Year")
+```
