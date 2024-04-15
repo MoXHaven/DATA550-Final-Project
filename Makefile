@@ -13,6 +13,10 @@ figure_one:
 figure_two:
 	Rscript code/make_figure2.R
 
+.PHONY: install
+install:
+ Rscript -e "renv::restore(prompt = FALSE)"
+ 
 .PHONY: clean
 clean:
-	rm -f output/*.rds && rm -f jiawen_final.html
+	rm -f output/*.rds && rm -f output/*.png && rm -f jiawen_final.html
