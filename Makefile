@@ -29,4 +29,4 @@ final_project_image: Dockerfile $(PROJECTFILES) $(RENVFILES)
 	touch $@
 
 report/jiawen_final.html:
-	docker pull moxhaven/final_project_image && docker run -v "$$(pwd)/report":/project/report moxhaven/final_project_image
+	docker run -v "$$(pwd)/report":/project/report moxhaven/final_project_image
