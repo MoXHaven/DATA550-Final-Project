@@ -16,6 +16,14 @@ Instead, simply input `make report/jiawen_final.html` in Terminal, and makefile 
 
 You can check the output file **jiawen_final.html** under the **/report** folder.
 
+## In case you need to build the image locally
+
+Use command `make final_project_image` instead to build image.
+
+**Caution: In this case you CANNOT use `make report/jiawen_final.html` since this will make docker pull the image from DockerHub, and the image you built won't be used during generation.**
+
+Instead, use `docker run -v "$$(pwd)/report":/project/report final_project_image` in Terminal to generate the report.
+
 ------------------------------------------------------------------------
 
 ## Descriptions for code files in `/code` directory
