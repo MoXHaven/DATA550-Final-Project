@@ -8,13 +8,13 @@ Created by Jiawen Shi
 
 Navigate to this directory using `cd /.../this folder` command in the Terminal.
 
-First, use `make install` to install necessary R packages recorded by renv.
+Docker image is needed for the generation of final report. This image is located at <https://hub.docker.com/r/moxhaven/final_project_image>
 
-Then input `make` to generate the report.
+**However, you don't need to pull this image manually.**
 
-You can find the output (jiawen_final.html) under the main folder.
+Instead, simply input `make report/jiawen_final.html` in Terminal, and makefile will do everything for you! :)
 
-To clean the outputs, use `make clean`.
+You can check the output file **jiawen_final.html** under the **/report** folder.
 
 ------------------------------------------------------------------------
 
@@ -43,3 +43,5 @@ This is just for your reference.
 Jiawen Shi
 
 03/25/2024
+
+Last updated on 04/30/2024
